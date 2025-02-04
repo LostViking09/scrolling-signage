@@ -21,7 +21,7 @@ An elegant Electron-based solution for displaying and auto-scrolling web content
 ## 🚀 Usage
 
 ```bash
-scrolling-signage [options]
+scrolling-signage --url="http://webpage.com/" [options]
 ```
 
 ### 🎮 Command Line Options
