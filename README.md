@@ -28,12 +28,12 @@ scrolling-signage --url="http://webpage.com/" [options]
 
 | Option | Alias | Description | Default |
 |--------|-------|-------------|---------|
-| --url | -u | The URL to display. Must use format: --url="https://example.com" | https://longdogechallenge.com/ (a fun scrolling demo!) |
+| --url | -u | The URL to display. Must use format: ```--url="https://example.com"``` | https://longdogechallenge.com/ (a fun scrolling demo!) |
 | --scrollpercent | -s | How much to scroll each interval, as a percentage of the viewport height | 0.25 |
 | --scrollinterval | -i | How often to scroll, in milliseconds | 2000 |
 | --reloadinterval | -r | How often to reload the page, in minutes | 5 |
 | --zoom | -z | Zoom level for the displayed content | 1.0 |
-| --hideCss | -h | CSS selector for elements to hide. Must use format: --hideCss=".selector" | "" |
+| --hideCss | -h | CSS selector for elements to hide. Must use format: ```--hideCss=".selector"``` | "" |
 | --help | none | Display the usage guide | n/a |
 
 ### Examples
