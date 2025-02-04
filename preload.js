@@ -13,11 +13,11 @@ const domLoadedPromise = new Promise((resolve) => {
 // Wait for both conditions to be met
 Promise.all([optionsPromise, domLoadedPromise])
   .then(([options]) => {
-    console.log("Options:", options);
-    console.log("Document loaded:", document.readyState);
+    // console.log("Options:", options);
+    // console.log("Document loaded:", document.readyState);
 
     // Set zoom level to 200%
-    webFrame.setZoomFactor(1.0);
+    webFrame.setZoomFactor(options.zoom);
 
     // Hide scrollbars while maintaining scroll functionality
     const style = document.createElement("style");
