@@ -13,7 +13,7 @@ export function displayHelp() {
                     name: 'url',
                     alias: 'u',
                     typeLabel: '{underline url}',
-                    description: 'The URL to display. This is the default option.',
+                    description: 'The URL to display. Must use format: --url="https://example.com" or -u="https://example.com"',
                     defaultValue: 'https://longdogechallenge.com/'
                 },
                 {
@@ -48,7 +48,7 @@ export function displayHelp() {
                     name: 'hideCss',
                     alias: 'h',
                     typeLabel: '{underline selector}',
-                    description: 'CSS selector for elements to hide (e.g., \'.cookie-banner, #popup\').',
+                    description: 'CSS selector for elements to hide. Must use format: --hideCss=".selector" or -h=".selector"',
                     defaultValue: ''
                 }
             ]
@@ -57,16 +57,16 @@ export function displayHelp() {
             header: 'Examples',
             content: [
                 {
-                    desc: '1. Display a website with default settings',
-                    example: '$ scrolling-signage https://example.com'
+                    desc: '1. Display a website with default settings (note the required = and quotes)',
+                    example: '$ scrolling-signage --url="https://example.com"'
                 },
                 {
-                    desc: '2. Custom scroll settings',
-                    example: '$ scrolling-signage -u https://example.com -s 0.5 -i 3000'
+                    desc: '2. Custom scroll settings (string options require = and quotes)',
+                    example: '$ scrolling-signage -u="https://example.com" -s 0.5 -i 3000'
                 },
                 {
-                    desc: '3. Hide elements and set zoom',
-                    example: '$ scrolling-signage -u https://example.com -z 1.5 -h ".ad-banner, #cookie-notice"'
+                    desc: '3. Hide elements and set zoom (note = and quotes for strings)',
+                    example: '$ scrolling-signage -u="https://example.com" -z 1.5 -h=".ad-banner, #cookie-notice"'
                 }
             ]
         }
