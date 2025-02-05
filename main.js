@@ -3,7 +3,6 @@ import { app, BrowserWindow } from 'electron';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import commandLineArgs from 'command-line-args';
-import { displayHelp } from './help.js';
 import { ipcMain } from 'electron';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -12,7 +11,6 @@ const __dirname = path.dirname(__filename);
 // console.log('Starting...');
 
 const optionDefinitions = [
-    { name: 'help', type: Boolean, description: 'Display this usage guide' },
     { name : 'url', alias : 'u', type : String, defaultOption : true, defaultValue: 'https://longdogechallenge.com/' },
     { name : 'scrollpercent', alias : 's', type: Number, defaultValue: 0.25 }, // How much to scroll each interval, as a percentage of the viewport height
     { name : 'scrollinterval', alias : 'i', type: Number, defaultValue: 2000 }, // How often to scroll, in milliseconds
@@ -21,11 +19,6 @@ const optionDefinitions = [
     { name : 'hideCss', alias : 'h', type: String, defaultValue: '' }, // CSS selector to hide, example: '.eu-cookie-panel, #skin_BoxV_1, #skin_Container_4'
 ];
 const options = commandLineArgs(optionDefinitions);
-
-if (options.help) {
-    console.log(displayHelp());
-    process.exit(0);
-}
 
 ipcMain.handle('get-options', () => {
     return options;

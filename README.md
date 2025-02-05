@@ -31,29 +31,28 @@ scrolling-signage -- --url 'http://webpage.com/' [options]
 
 | Option | Alias | Description | Default |
 |--------|-------|-------------|---------|
-| --url | -u | The URL to display. Must use format:<br> ```--url="https://example.com"``` | https://longdogechallenge.com/ (a fun scrolling demo!) |
+| --url | -u | The URL to display. | https://longdogechallenge.com/ (a fun scrolling demo!) |
 | --scrollpercent | -s | How much to scroll each interval, as a percentage of the viewport height | 0.25 |
 | --scrollinterval | -i | How often to scroll, in milliseconds | 2000 |
 | --reloadinterval | -r | How often to reload the page, in minutes | 5 |
 | --zoom | -z | Zoom level for the displayed content | 1.0 |
-| --hideCss | -h | CSS selector for elements to hide. Must use format: <br>```--hideCss=".selector"``` | "" |
-| --help | none | Display the usage guide | n/a |
+| --hideCss | -h | CSS selector for elements to hide. Example: `--hideCss '.selector #selector2'` | "" |
 
 ### Examples
 
 1. Display a website with default settings:
 ```bash
-scrolling-signage --url="https://example.com"
+scrolling-signage --url "https://example.com"
 ```
 
 2. Custom scroll settings:
 ```bash
-scrolling-signage -u="https://example.com" -s 0.5 -i 3000
+scrolling-signage -u "https://example.com" -s 0.5 -i 3000
 ```
 
 3. Hide elements and set zoom:
 ```bash
-scrolling-signage -u="https://example.com" -z 1.5 -h=".ad-banner, #cookie-notice"
+scrolling-signage -u "https://example.com" -z 1.5 -h ".ad-banner, #cookie-notice"
 ```
 
 ## 📝 Important Notes
