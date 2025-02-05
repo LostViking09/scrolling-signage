@@ -21,7 +21,7 @@ An elegant Electron-based solution for displaying and auto-scrolling web content
 ## 🚀 Usage
 
 ```bash
-scrolling-signage.exe -- --url 'http://webpage.com/' [options]
+scrolling-signage.exe -- --url "http://webpage.com/" [options]
 ```
 
 > [!IMPORTANT]
@@ -36,7 +36,7 @@ scrolling-signage.exe -- --url 'http://webpage.com/' [options]
 | --scrollinterval | -i | How often to scroll, in milliseconds | 2000 |
 | --reloadinterval | -r | How often to reload the page, in minutes | 5 |
 | --zoom | -z | Zoom level for the displayed content | 1.0 |
-| --hideCss | -h | CSS selector for elements to hide. Example: `--hideCss '.selector #selector2'` | "" |
+| --hideCss | -h | CSS selector for elements to hide. Example: `--hideCss ".selector #selector2"` | "" |
 
 ### Examples
 
