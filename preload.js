@@ -49,9 +49,11 @@ Promise.all([optionsPromise, domLoadedPromise])
 
         // If we're near the bottom, pause for a moment before jumping back to top
         if (currentScroll + clientHeight >= scrollHeight - 10) {
-          // setTimeout(() => {
+          clearInterval(intervalID);
+          setTimeout(() => {
             window.scrollTo({ top: 0, behavior: "smooth" });
-          // }, pauseTime);
+            intervalID = setInterval(scrollScript, options.scrollinterval);
+          }, pauseTime);
         }
         // If we we're at the top, pause scrolling for a moment
         else if (currentScroll <= 10) {

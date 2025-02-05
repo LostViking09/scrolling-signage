@@ -4,7 +4,8 @@
   "main": "main.js",
   "type": "module",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "buildPortable": "electron-builder --win=portable"
   },
   "author": "LostViking09",
   "license": "MIT",
