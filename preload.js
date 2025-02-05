@@ -45,20 +45,29 @@ Promise.all([optionsPromise, domLoadedPromise])
         const currentScroll = window.scrollY;
         const scrollPixels =
           document.documentElement.clientHeight * options.scrollpercent;
+        const pauseTime = options.scrollinterval/(options.scrollpercent*3)
 
         // If we're near the bottom, pause for a moment before jumping back to top
         if (currentScroll + clientHeight >= scrollHeight - 10) {
-          setTimeout(() => {
+          // setTimeout(() => {
             window.scrollTo({ top: 0, behavior: "smooth" });
-          }, 2000); // Pause for 2 seconds at the bottom
+          // }, pauseTime);
+        }
+        // If we we're at the top, pause scrolling for a moment
+        else if (currentScroll <= 10) {
+          clearInterval(intervalID);
+          setTimeout(() => {
+            window.scrollBy({ top: scrollPixels, behavior: "smooth" });
+            intervalID = setInterval(scrollScript, options.scrollinterval);
+          }, pauseTime);
         } else {
           // Smooth scroll down
           window.scrollBy({ top: scrollPixels, behavior: "smooth" });
         }
       };
 
-      setInterval(scrollScript, options.scrollinterval);
-    }, 2000); // Wait 2 seconds for content to load
+      var intervalID = setInterval(scrollScript, options.scrollinterval);
+    }, 500); // Wait 500ms for any additional content to load
 
     // Reload the page every X minutes
     setInterval(() => {
