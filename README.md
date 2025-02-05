@@ -21,7 +21,7 @@ An elegant Electron-based solution for displaying and auto-scrolling web content
 ## 🚀 Usage
 
 ```bash
-scrolling-signage -- --url 'http://webpage.com/' [options]
+scrolling-signage.exe -- --url 'http://webpage.com/' [options]
 ```
 
 > [!IMPORTANT]
@@ -42,17 +42,17 @@ scrolling-signage -- --url 'http://webpage.com/' [options]
 
 1. Display a website with default settings:
 ```bash
-scrolling-signage --url "https://example.com"
+scrolling-signage.exe --url "https://example.com"
 ```
 
 2. Custom scroll settings:
 ```bash
-scrolling-signage -u "https://example.com" -s 0.5 -i 3000
+scrolling-signage.exe -u "https://example.com" -s 0.5 -i 3000
 ```
 
 3. Hide elements and set zoom:
 ```bash
-scrolling-signage -u "https://example.com" -z 1.5 -h ".ad-banner, #cookie-notice"
+scrolling-signage.exe -u "https://example.com" -z 1.5 -h ".ad-banner, #cookie-notice"
 ```
 
 ## 📝 Important Notes
