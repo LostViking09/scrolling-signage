@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "electron .",
-    "buildPortable": "electron-builder --win=portable"
+    "buildPortable": "electron-builder --win=portable --linux=AppImage"
   },
   "author": "LostViking09",
   "license": "MIT",
