@@ -21,8 +21,11 @@ An elegant Electron-based solution for displaying and auto-scrolling web content
 ## 🚀 Usage
 
 ```bash
-scrolling-signage --url="http://webpage.com/" [options]
+scrolling-signage -- --url 'http://webpage.com/' [options]
 ```
+
+> [!IMPORTANT]
+> You need add a blank argument (`--`) right after the executable to pass all arguments properly to Electron.
 
 ### 🎮 Command Line Options
 
