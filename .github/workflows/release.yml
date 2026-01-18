@@ -54,22 +54,22 @@ jobs:
           prerelease: false
           generate_release_notes: false
           body: |
-            ## 🎉 Version ${{ steps.get_version.outputs.version }}
+            ## Version ${{ steps.get_version.outputs.version }}
 
-            ### ✨ What's New
+            ### What's New
             - [Add new features here]
 
-            ### 🐛 Bug Fixes
+            ### Bug Fixes
             - [Add bug fixes here]
 
-            ### 📦 Downloads
+            ### Downloads
             - **Windows**: Download the `scrolling-signage-${{ steps.get_version.outputs.version }}-win.exe` file below
             - **macOS**: Download the `scrolling-signage-${{ steps.get_version.outputs.version }}-mac.dmg` file below
 
-            ### 📝 Changelog
+            ### Changelog
             ${{ steps.changelog.outputs.commits }}
 
-            ### ⚠️ Known Issues
+            ### Known Issues
             - [Add any known issues here]
 
   build-windows:
