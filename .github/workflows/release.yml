@@ -66,7 +66,8 @@ jobs:
 
             ### Downloads
             - **Windows**: Download the `scrolling-signage-${{ steps.get_version.outputs.version }}-win.exe` file below
-            - **macOS**: Download the `scrolling-signage-${{ steps.get_version.outputs.version }}-mac.dmg` file below
+            - **macOS (Intel)**: Download the `scrolling-signage-${{ steps.get_version.outputs.version }}-mac-x64.dmg` file below
+            - **macOS (Apple Silicon)**: Download the `scrolling-signage-${{ steps.get_version.outputs.version }}-mac-arm64.dmg` file below
 
             ### Changelog
             ${{ steps.changelog.outputs.commits }}
@@ -100,7 +101,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: ./dist/scrolling-signage-${{ needs.create-release.outputs.version }}.exe
+          files: ./dist/scrolling-signage-${{ needs.create-release.outputs.version }}-win.exe
           draft: true
 
   build-macos:
@@ -124,10 +125,12 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run build:mac
 
-      - name: Upload macOS artifact
+      - name: Upload macOS artifacts
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: ./dist/*.dmg
+          files: |
+            ./dist/scrolling-signage-${{ needs.create-release.outputs.version }}-mac-x64.dmg
+            ./dist/scrolling-signage-${{ needs.create-release.outputs.version }}-mac-arm64.dmg
           draft: true
