@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*.*.*'
 
+permissions:
+  contents: write
+
 jobs:
   create-release:
     runs-on: ubuntu-latest
@@ -35,17 +38,21 @@ jobs:
           
           # Save to file to handle multiline
           echo "$COMMITS" > changelog.txt
+          
+          # Also save to output (with proper escaping)
+          {
+            echo 'commits<<EOF'
+            cat changelog.txt
+            echo EOF
+          } >> $GITHUB_OUTPUT
 
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Version ${{ steps.get_version.outputs.version }}
           draft: true
           prerelease: false
+          generate_release_notes: false
           body: |
             ## 🎉 Version ${{ steps.get_version.outputs.version }}
 
@@ -85,14 +92,10 @@ jobs:
         run: npm run build:win
 
       - name: Upload Windows artifact
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
         with:
-          upload_url: ${{ needs.create-release.outputs.upload_url }}
-          asset_path: ./dist/scrolling-signage-${{ needs.create-release.outputs.version }}.exe
-          asset_name: scrolling-signage-${{ needs.create-release.outputs.version }}-win.exe
-          asset_content_type: application/octet-stream
+          files: ./dist/scrolling-signage-${{ needs.create-release.outputs.version }}.exe
+          draft: true
 
   build-macos:
     needs: create-release
@@ -113,18 +116,8 @@ jobs:
       - name: Build macOS DMG
         run: npm run build:mac
 
-      - name: Find DMG file
-        id: find_dmg
-        run: |
-          DMG_PATH=$(find ./dist -name "*.dmg" -type f | head -n 1)
-          echo "dmg_path=$DMG_PATH" >> $GITHUB_OUTPUT
-
       - name: Upload macOS artifact
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
         with:
-          upload_url: ${{ needs.create-release.outputs.upload_url }}
-          asset_path: ${{ steps.find_dmg.outputs.dmg_path }}
-          asset_name: scrolling-signage-${{ needs.create-release.outputs.version }}-mac.dmg
-          asset_content_type: application/octet-stream
+          files: ./dist/*.dmg
+          draft: true
