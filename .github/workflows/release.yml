@@ -49,6 +49,8 @@ jobs:
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           draft: true
           prerelease: false
@@ -93,6 +95,8 @@ jobs:
 
       - name: Upload Windows artifact
         uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           files: ./dist/scrolling-signage-${{ needs.create-release.outputs.version }}.exe
           draft: true
@@ -118,6 +122,8 @@ jobs:
 
       - name: Upload macOS artifact
         uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           files: ./dist/*.dmg
           draft: true
