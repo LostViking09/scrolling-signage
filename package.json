@@ -12,13 +12,16 @@
   "description": "",
   "devDependencies": {
     "@eslint/js": "^9.19.0",
-    "electron": "^34.0.2",
-    "electron-builder": "^25.1.8",
+    "electron": "^40.0.0",
+    "electron-builder": "^26.4.0",
     "eslint": "^9.19.0",
     "globals": "^15.14.0"
   },
   "dependencies": {
     "command-line-args": "^6.0.1",
     "command-line-usage": "^7.0.3"
+  },
+  "overrides": {
+    "tar": "^7.5.3"
   }
 }
