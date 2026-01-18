@@ -15,6 +15,7 @@
   "build": {
     "appId": "com.lostviking09.scrolling-signage",
     "productName": "scrolling-signage",
+    "publish": null,
     "directories": {
       "output": "dist"
     },
