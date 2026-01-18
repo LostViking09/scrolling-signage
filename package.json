@@ -1,6 +1,6 @@
 {
   "name": "scrolling-signage",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "main": "main.js",
   "type": "module",
   "scripts": {
