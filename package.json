@@ -5,11 +5,46 @@
   "type": "module",
   "scripts": {
     "start": "electron .",
-    "buildWinPortable": "electron-builder --win=portable"
+    "build:win": "electron-builder --win=portable",
+    "build:mac": "electron-builder --mac=dmg",
+    "postversion": "git push --follow-tags"
   },
   "author": "LostViking09",
   "license": "MIT",
-  "description": "",
+  "description": "Scrolling signage application",
+  "build": {
+    "appId": "com.lostviking09.scrolling-signage",
+    "productName": "scrolling-signage",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "artifactName": "${productName}-${version}.${ext}"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "category": "public.app-category.utilities",
+      "artifactName": "${productName}-${version}.${ext}"
+    },
+    "files": [
+      "**/*",
+      "!**/*.md",
+      "!.vscode",
+      "!.git",
+      "!dist"
+    ]
+  },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
     "electron": "^40.0.0",
